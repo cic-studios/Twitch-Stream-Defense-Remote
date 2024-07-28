@@ -153,10 +153,11 @@
                             <label for="inputTChat">Twitch Stream Chat:</label>
                             <input id="inputTChat" type="text" name="inputTChat" placeholder="Stream Chat" value="archonthewizard"/>
                         </div>
-                        <div id = "divConnectButtons" class="flexRow flexAround margin5">
+                        <div id = "divConnectButtons" class="flexRow flexAround margin5 gap10">
                             <!--<a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a>-->
                             <button id="btnGetOAuth" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get OAuth</button>
-                            <button id="btnConnect" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect</button>
+                            <button id="btnViewStream" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">Twitch Stream</button>
+                            <button id="btnConnect" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
                         </div>
                     </div>
                     <div id="joinButtonPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">

@@ -164,6 +164,11 @@ function TwitchGetOAuth()
     //window.open('https://id.twitch.tv/oauth2/authorize?client_id=6z3qkx3f4s3f1m9r0n8b9&redirect_uri=https://twitchapps.com/tmi/&response_type=token&scope=chat%3Aread+chat%3Aedit+commands', '_blank');
 }
 
+function TwitchViewStream()
+{
+    window.open(`https://twitch.tv/${tChannel.replace("#", "")}`, '_blank')
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const divChatMessage = document.getElementById("inputSendChatMessage");
