@@ -49,9 +49,9 @@ function TwitchWebSocket_Open()
 {
     tCount=0;
     
-    twitchWebSocket.send(`PASS oauth:${oAuth.replace("oauth:", "").replace("oAuth:", "").replace("OAuth:", "").replace("OAUTH:", "")}`);
+    twitchWebSocket.send(`PASS oauth:${oAuth.replace("oauth", "").replace("oAuth", "").replace("OAuth", "").replace("OAUTH", "").replace(":", "").replace(/\s/g, "")}`);
     twitchWebSocket.send(`NICK ${tNick}`);
-    twitchWebSocket.send(`JOIN #${tChannel.replace("#", "")}`);
+    twitchWebSocket.send(`JOIN #${tChannel.replace("#", "").replace(/\s/g, "")}`);
 }
 
 function TwitchWebSocket_Recieve(message)
