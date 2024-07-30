@@ -141,10 +141,10 @@
         <!----------------------------------------------------------------------------MAIN BODY--------------------------------------------------------------------------------------------------------->
         <div id="MainBodyContent" class="flexCol flexStart CrossCenter">
             <!--<iframe id="MainBodyContentFrame" src="https://wikipedia.com/" frameborder="0" allowfullscreen style ="width: 100%; height: 100%;"></iframe>-->
-            <div class="flexRow flexCenter crossCenter">
-                <div class="flexCol flexCenter crossCenter" style="border: 4px; border-style: solid; border-color: var(--mbaBackBright); border-radius: 10px;">
+            <div class="flexCol flexCenter crossCenter">
+                <div class="flexCol flexStart crossCenter" style="border: 4px; border-style: solid; border-color: var(--mbaBackBright); border-radius: 10px;">
                     
-                    <div id="ConnectionInfoPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5"  style="color: var(--mbaBackBright);">
+                    <div id="ConnectionInfoPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5"  style="color: var(--mbaBackBright); border-style: none none solid none; border-width: 3px;">
                         <div id="divOAuth" class="flexRow flexEnd margin5">
                             <label for="inputOAuth">Twitch OAuth Token:</label>
                             <input id="inputOAuth" type="text" name="inputOAuth" placeholder="Enter your OAuth" value=""/>
@@ -160,16 +160,9 @@
                             <button id="btnConnect" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
                         </div>
                     </div>
-                    <div id="joinButtonPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnReset" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Reset()">Reset</button>
-                        <button id="btnJoinArcher" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('archer')">Archer</button>
-                        <button id="btnJoinRogue" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('rogue')">Rogue</button>
-                        <button id="btnJoinFiremage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('firemage')">Firemage</button>
-                        <button id="btnJoinTimemage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('timemage')">Timemage</button>
-                        <button id="btnJoinPoisoner" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poisoner</button>
-                        <button id="btnJoinBard" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
-                    </div>
-                    <div id="RecievedChatMessagesPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
+                    
+                    <div id="RecievedChatMessagesPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5" style="color:var(--mbaBackBright); position: relative;">
+                        <div class="sdBackground"></div>
                         <div id="divChatMessage19" contenteditable="true" class="selfCrossStretch" style="color: var(--mbaBackBright);">></div>
                         <div id="divChatMessage18" contenteditable="true" class="selfCrossStretch" style="color: var(--mbaBackBright);">></div>
                         <div id="divChatMessage17" contenteditable="true" class="selfCrossStretch" style="color: var(--mbaBackBright);">></div>
@@ -191,50 +184,125 @@
                         <div id="divChatMessage1" contenteditable="true" class="selfCrossStretch" style="color: var(--mbaBackBright);">></div>
                         <div id="divChatMessage0" contenteditable="true" class="selfCrossStretch" style="color: var(--mbaBackBright);">></div>
                     </div>
-                    <div id="SendChatMessagePanel" class="flexRow flexEnd crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
+                    <div id="SendChatMessagePanel" class="flexRow flexEnd crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright); border-style: none none solid none; border-width: 3px;">
                         <input id="inputSendChatMessage" type="text" name="inputSendChatMessage" placeholder="Chat Message" class="selfFlexGrow selfCrossStretch" onkeydown="if (event.key == 'Enter'){ChatMessage_Send()}"/>
                         <button id="btnSendChatMessage" class="selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="ChatMessage_Send()">Send</button>
                     </div>
-                    
-                    <div id="characterSlotPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnCharacterSlot1" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(0)">Slot 1</button>
-                        <button id="btnCharacterSlot2" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(1)">Slot 2</button>
-                        <button id="btnCharacterSlot3" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(2)">Slot 3</button>
-                        <button id="btnCharacterSlot4" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(3)">Slot 4</button>
+
+                    <div id="joinButtonPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); margin: 5px 0px;">
+                        <button id="btnReset" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Reset()">Reset</button>
+                        <button id="btnJoinArcher" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('archer')">Archer</button>
+                        <button id="btnJoinRogue" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('rogue')">Rogue</button>
+                        <button id="btnJoinFiremage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('firemage')">Firemage</button>
+                        <button id="btnJoinTimemage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('timemage')">Timemage</button>
+                        <button id="btnJoinPoisoner" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poisoner</button>
+                        <button id="btnJoinBard" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
                     </div>
-                    <div id="groupSelectionPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnGroupSelectionAll" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(-1)">All</button>
-                        <button id="btnGroupSelectionSingle" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(0)">Single</button>
-                        <button id="btnGroupSelectionTeam1" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(1)">Team 1</button>
-                        <button id="btnGroupSelectionTeam2" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(2)">Team 2</button>
+
+                    <div id="modeTabsPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
+                        <div class="selfCrossEnd sdTabPlaceholder"></div>
+                        <button id="btnCharactersTab" class="selfFlexGrow sdTabOn" style="padding: 2px 5px;" onclick="TabToggleClick(0)">Characters</button>
+                        <div class="selfCrossEnd sdTabPlaceholder"></div>
+                        <button id="btnSpellsTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(1)">Spells</button>
+                        <div class="selfCrossEnd sdTabPlaceholder"></div>
+                        <button id="btnSpecsTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(2)">Specs</button>
+                        <div class="selfFlexGrow selfCrossEnd sdTabPlaceholder"></div>
                     </div>
-                    <div id="towersPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnVote1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote1</button>
-                        <button id="btnTower1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(1)">Tower<br>1</button>
-                        <button id="btnTower2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(2)">Tower<br>2</button>
-                        <button id="btnTower3" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(3)">Tower<br>3</button>
-                        <button id="btnTower4" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(4)">Tower<br>4</button>
-                        <button id="btnTower5" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(5)">Tower<br>5</button>
-                        <button id="btnTower6" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(6)">Tower<br>6</button>
+
+                    <div id="divCharactersTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright);">
+                        <div id="characterSlotPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnCharacterSlot1" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(0)">Slot 1</button>
+                            <button id="btnCharacterSlot2" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(1)">Slot 2</button>
+                            <button id="btnCharacterSlot3" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(2)">Slot 3</button>
+                            <button id="btnCharacterSlot4" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(3)">Slot 4</button>
+                        </div>
+                        <div id="groupSelectionPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnGroupSelectionAll" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(-1)">All</button>
+                            <button id="btnGroupSelectionSingle" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(0)">Single</button>
+                            <button id="btnGroupSelectionTeam1" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(1)">Team 1</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(2)">Team 2</button>
+                        </div>
+                        <div id="towersPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnVote1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote1</button>
+                            <button id="btnTower1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(1)">Tower<br>1</button>
+                            <button id="btnTower2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(2)">Tower<br>2</button>
+                            <button id="btnTower3" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(3)">Tower<br>3</button>
+                            <button id="btnTower4" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(4)">Tower<br>4</button>
+                            <button id="btnTower5" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(5)">Tower<br>5</button>
+                            <button id="btnTower6" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(6)">Tower<br>6</button>
+                        </div>
+                        <div id="towersPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnVote2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote2</button>
+                            <button id="btnTower7" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(7)">Tower<br>7</button>
+                            <button id="btnTower8" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(8)">Tower<br>8</button>
+                            <button id="btnTower9" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(9)">Tower<br>9</button>
+                            <button id="btnTower10" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(10)">Tower<br>10</button>
+                            <button id="btnTower11" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(11)">Tower<br>11</button>
+                            <button id="btnTower12" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(12)">Tower<br>12</button>
+                        </div>
+                        <div id="commandsPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('up')">Power<br>Up</button>
+                            <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('down')">Power<br>Down</button>
+                            <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('lock')">Power<br>Lock</button>
+                            <button id="btnTrain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Train()">Train</button>
+                            <button id="btnAltar" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Altar()">Altar</button>
+                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake<br>AFK</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Leave()">Leave</button>
+                        </div>
                     </div>
-                    <div id="towersPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnVote2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote2</button>
-                        <button id="btnTower7" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(7)">Tower<br>7</button>
-                        <button id="btnTower8" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(8)">Tower<br>8</button>
-                        <button id="btnTower9" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(9)">Tower<br>9</button>
-                        <button id="btnTower10" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(10)">Tower<br>10</button>
-                        <button id="btnTower11" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(11)">Tower<br>11</button>
-                        <button id="btnTower12" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(12)">Tower<br>12</button>
+
+                    <div id="divSpellsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
+                        <div id="towerSelectionPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglTower1" class="selfFlexGrow selfCrossStretch sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(0)">Tower<br>1</button>
+                            <button id="tglTower2" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(1)">Tower<br>2</button>
+                            <button id="tglTower3" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(2)">Tower<br>3</button>
+                            <button id="tglTower4" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(3)">Tower<br>4</button>
+                            <button id="tglTower5" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(4)">Tower<br>5</button>
+                            <button id="tglTower6" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(5)">Tower<br>6</button>
+                        </div>
+                        <div id="towerSelectionPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglTower7" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(6)">Tower<br>7</button>
+                            <button id="tglTower8" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(7)">Tower<br>8</button>
+                            <button id="tglTower9" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(8)">Tower<br>9</button>
+                            <button id="tglTower10" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(9)">Tower<br>10</button>
+                            <button id="tglTower11" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(10)">Tower<br>11</button>
+                            <button id="tglTower12" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(11)">Tower<br>12</button>
+                        </div>
+                        <div id="runeSpellPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!pwr')">Power<br>Rune</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!rpd')">Rapid<br>Rune</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!xpr')">Exp.<br>Rune</button>
+                            <button id="btnGroupSelectionAll" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!arm')">Armor<br>Ammo</button>
+                        </div>
+                        <div id="ammoSpellPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnGroupSelectionSingle" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!eam')">Elemental<br>Ammo</button>
+                            <button id="btnGroupSelectionTeam1" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!mam')">Magi<br>Ammo</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!tam')">Templar<br>Ammo</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!wam')">Wolfclan<br>Ammo</button>
+                        </div>
+                        <!--<div id="spellSeparatorPanel" class="selfCrossStretch" style="min-width: 100%; border-color: var(--mbaBackBright); border-bottom-style: dotted; border-width: 3px;"></div>-->
+                        <div id="globalSpellsPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!blt')">Blitz</button>
+                            <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!dth')">Death<br>Strike</button>
+                            <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!sup')">Supply<br>Drop</button>
+                            <button id="btnTrain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!xpp')">Exp.<br>Potion</button>
+                            <button id="btnAltar" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!frz')">Freeze<br>Time</button>
+                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!hst')">Haste</button>
+                        </div>
+                        <div id="globalSpellsPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lvl')">LevelUp</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lck')">Luck</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!mss')">Mass<br>Mastery</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!pwt')">Power<br>Tome</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!trn')">Training<br>Tome</button>
+                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake<br>AFK</button>
+                        </div>
                     </div>
-                    <div id="commandsPanel" class="flexRow flexStretch crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright);">
-                        <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('up')">Power<br>Up</button>
-                        <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('down')">Power<br>Down</button>
-                        <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('lock')">Power<br>Lock</button>
-                        <button id="btnTrain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Train()">Train</button>
-                        <button id="btnAltar" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Altar()">Altar</button>
-                        <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake<br>AFK</button>
-                        <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Leave()">Leave</button>
+
+                    <div id="divSpecsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
+                        UNDER CONSTRUCTION
                     </div>
+
                 </div>
             </div>
         </div>

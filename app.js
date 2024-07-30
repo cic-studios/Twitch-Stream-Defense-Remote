@@ -5,7 +5,6 @@ let oAuth = "";
 
 let twitchWebSocket = null;
 
-
 let hidePingSMS = true;
 let hideNoticeSMS = false;
 let hideUnknownSMS = true;
@@ -15,7 +14,24 @@ const maxChatMessages = 20;
 const htmlChatMessageDivs = [];
 for(let i = 0; i < maxChatMessages; i++)
     htmlChatMessageDivs.push({div:document.getElementById(`divChatMessage${i}`), parsedSMS:{rawData:">", count:-1, type:"NONE", sender:"", sms:">"}});
+const htmlTowerToggle = [];
+for(let i = 1; i <= 12; i++)
+    htmlTowerToggle.push(document.getElementById(`tglTower${i}`));
 
+const htmlTabButtons =
+[
+    document.getElementById("btnCharactersTab"),
+    document.getElementById("btnSpellsTab"),
+    document.getElementById("btnSpecsTab")
+];
+const htmlTabPanels =
+[
+    document.getElementById("divCharactersTab"),
+    document.getElementById("divSpellsTab"),
+    document.getElementById("divSpecsTab")
+];
+
+GetFormTwitchData();
 function GetFormTwitchData()
 {
     //tNick = document.getElementById("inputTNick").value;
@@ -178,11 +194,13 @@ function ChatMessage_Send()
     divChatMessage.value = "";
 }
 
+let selectedTab = 0;
 let characterSlots = ["","","",""];
 let selectionMode = -1; //-1=all 0=single 1=team1 2=team2
 let singleSlot = 0;
 let toggledTeam1 = [true,true,false,false];
 let toggledTeam2 = [false,false,true,true];
+let toggledTowers = [true,false,false,false,false,false,false,false,false,false,false,false];
 
 const divsSelectionToggleButtons =
 [
@@ -216,7 +234,8 @@ const repeatProtection =
     trainShortcut: false,
     altarShortcut: false,
     awakeShortcut: false,
-    leaveShortcut: false
+    leaveShortcut: false,
+    spellShortcut: false
 };
 
 
@@ -255,6 +274,8 @@ function isShortcut(classname)
             return repeatProtection.awakeShortcut;
         case "leave":
             return repeatProtection.leaveShortcut;
+        case "spell":
+            return repeatProtection.spellShortcut;
         default:
             return false;
     }
@@ -308,8 +329,32 @@ function ToggleShortcut(classname)
         case "leave":
             repeatProtection.leaveShortcut = !repeatProtection.leaveShortcut;
             break;
+        case "spell":
+            repeatProtection.spellShortcut = !repeatProtection.spellShortcut;
+            break;
         default:
             break;
+    }
+}
+
+function UpdateTabToggles(selectedTab)
+{
+    for(let i=0;i<htmlTabButtons.length;i++)
+    {
+        if(i==selectedTab)
+        {
+            htmlTabButtons[i].classList.remove("sdTabOff");
+            htmlTabButtons[i].classList.add("sdTabOn");
+            if(i<htmlTabPanels.length)
+                htmlTabPanels[i].style.display = "flex";
+        }
+        else
+        {
+            htmlTabButtons[i].classList.remove("sdTabOn");
+            htmlTabButtons[i].classList.add("sdTabOff");
+            if(i<htmlTabPanels.length)
+                htmlTabPanels[i].style.display = "none";
+        }
     }
 }
 
@@ -358,6 +403,31 @@ function UpdateSelectionToggles(togglestates)
     }
 }
 
+function UpdateTowerToggles(togglestates)
+{
+    for(let i=0;i<toggledTowers.length;i++)
+    {
+        if(togglestates[i])
+        {
+            htmlTowerToggle[i].classList.remove("sdToggleOff");
+            htmlTowerToggle[i].classList.add("sdToggleOn");
+        }
+        else
+        {
+            htmlTowerToggle[i].classList.remove("sdToggleOn");
+            htmlTowerToggle[i].classList.add("sdToggleOff");
+        }
+    }
+}
+
+function TabToggleClick(tabnum)
+{
+    if(tabnum<0 || tabnum>=htmlTabButtons.length || tabnum>=htmlTabPanels.length)
+        return;
+    selectedTab = tabnum;
+    UpdateTabToggles(selectedTab);
+}
+
 function SelectToggleClick(selectID)
 {
     if(selectID==selectionMode || selectID<-1 || selectID>2)
@@ -399,15 +469,28 @@ function SlotToggleClick(slotnum)
     }
 }
 
+function TowerToggleClick(towernum)
+{
+    if(towernum<0 || towernum>=toggledTowers.length)
+        return;
+    toggledTowers[towernum] = !toggledTowers[towernum];
+    UpdateTowerToggles(toggledTowers);
+}
+
 function SD_Reset()
 {
+    selectedTab = 0;
+    UpdateTabToggles(selectedTab);
     characterSlots = ["","","",""];
     selectionMode = -1;
     singleSlot = 0;
     toggledTeam1 = [true,true,false,false];
     toggledTeam2 = [false,false,true,true];
+    UpdateSlotToggles([true,true,true,true]);
     UpdateSelectionToggles([true,false,false,false]);
-    UpdateSelectionToggles([true,true,true,true]);
+    for(let i=0;i<toggledTowers.length;i++)
+        i==0? toggledTowers[i]=true : toggledTowers[i]=false;
+    UpdateTowerToggles(toggledTowers);
 }
 
 function SD_Join(classname)
@@ -495,13 +578,11 @@ function SD_AwakeAFK()
 
 function SD_Leave()
 {
-    MultiselectCommandBuilder(isShortcut("leave")? "!leave " : "!leave");
-    ToggleShortcut("leave");
+    MultiselectCommandBuilder("!leave");
 }
 
 function MultiselectCommandBuilder(command)
 {
-    console.log(characterSlots, singleSlot, toggledTeam1, toggledTeam2);
     if(selectionMode == -1)
         TwitchWebSocket_Send(command);
     else if(selectionMode == 0)
@@ -509,7 +590,6 @@ function MultiselectCommandBuilder(command)
     else if(selectionMode==1 || selectionMode == 2)
     {
         const team = [];
-        
         for(let i = 0; i < 4; i++)
         {
             if(selectionMode==1 && toggledTeam1[i])
@@ -522,7 +602,41 @@ function MultiselectCommandBuilder(command)
             let multiCommand = `${team[0].substring(0,1)}${command}`;
             for(let i=1; i<team.length; i++)
                 multiCommand += ` ${team[i].substring(0,1)}${command}`;
+            if(command=="!leave")
+            {
+                if(isShortcut("leave"))
+                    multiCommand += " !";
+                ToggleShortcut("leave");
+            }
             TwitchWebSocket_Send(multiCommand);
         }
+    }
+}
+
+function SD_GlobalSpellCast(command)
+{
+    isShortcut("spell")? TwitchWebSocket_Send(`${command} !`) : TwitchWebSocket_Send(`${command}`);
+    ToggleShortcut("spell");
+}
+
+function SD_MultiSpellCast(command)
+{
+    const towernums = [];
+    for(let i=0; i<toggledTowers.length; i++)
+    {
+        if(toggledTowers[i])
+            towernums.push(i+1);
+    }
+    if(towernums.length < 1)
+    {
+        SD_GlobalSpellCast(command);
+    }
+    else
+    {
+        let multiCommand = "";
+        for(let i=0; i<towernums.length; i++)
+            i<towernums.length-1? multiCommand+=`${command}${towernums[i]} ` : multiCommand+=`${command}${towernums[i]}`;
+        if(multiCommand.length > 0)
+            SD_GlobalSpellCast(multiCommand);
     }
 }
