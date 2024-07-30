@@ -356,6 +356,49 @@ body
     text-shadow: 0px 0px 8px var(--mbaYeetYellow);
 }
 
+.sdBackground
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('./Images/Stream-Logo.webp');
+    background-position:center;
+    background-size: contain;
+    background-repeat:no-repeat;
+    filter: opacity(0.5) brightness(0.5);
+}
+
+.sdTabOn
+{
+    cursor: pointer;
+    background-color: transparent;
+    border-color: var(--mbaBackBright);
+    color: var(--mbaBackBright);
+    border-style: solid solid none solid;
+    border-radius: 10px 10px 0px 0px;
+    border-width: 3px;
+    font-weight: bold;
+}
+.sdTabOff
+{
+    cursor: pointer;
+    background-color: transparent;
+    border-color: var(--mbaBackBright);
+    color: var(--mbaBackBright);
+    border-style: solid solid solid solid;
+    border-radius: 10px 10px 0px 0px;
+    border-width: 1px 1px 3px 1px;
+}
+.sdTabPlaceholder
+{
+    background-color: transparent;
+    border-color: var(--mbaBackBright);
+    color: var(--mbaBackBright);
+    border-style: none none solid none;
+    border-width: 3px;
+    min-width: 10px;
+}
+
 .sdToggleOff
 {
     cursor: pointer;
