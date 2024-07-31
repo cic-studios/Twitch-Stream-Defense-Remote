@@ -11,6 +11,10 @@ let hideUnknownSMS = true;
 let hideAllSystemSMS = false;
 let chatMessagesPrefix = "> ";
 const maxChatMessages = 20;
+const htmlBtnChatConnect = document.getElementById("btnChatConnect")
+htmlBtnChatConnect.style.borderStyle = "solid";
+htmlBtnChatConnect.style.borderWidth = "2px";
+htmlBtnChatConnect.style.borderColor = "red";
 const htmlChatMessageDivs = [];
 for(let i = 0; i < maxChatMessages; i++)
     htmlChatMessageDivs.push({div:document.getElementById(`divChatMessage${i}`), parsedSMS:{rawData:">", count:-1, type:"NONE", sender:"", sms:">"}});
@@ -30,6 +34,56 @@ const htmlTabPanels =
     document.getElementById("divSpellsTab"),
     document.getElementById("divSpecsTab")
 ];
+
+let messageQueue = [];
+let lastMessageTime = new Date().getTime();
+
+function TwitchWebSocket_SendQueue(message)
+{
+    if(twitchWebSocket.readyState==1 && messageQueue.length==0 && (new Date().getTime()-lastMessageTime)>=1250)
+    {
+        TwitchWebSocket_SendImmediate(message);
+        lastMessageTime = new Date().getTime();
+    }
+    else
+    {
+        messageQueue.push(message);
+    }
+}
+
+setInterval(TwitchWebSocket_CheckQueue, 1251);
+function TwitchWebSocket_CheckQueue()
+{
+    if(twitchWebSocket.readyState==1 && messageQueue.length>0 && (new Date().getTime()-lastMessageTime)>=1250)
+    {
+        TwitchWebSocket_SendImmediate(messageQueue.shift());
+        lastMessageTime = new Date().getTime();
+    }
+}
+
+setInterval(TwitchConnectionShowStatus, 1000);
+function TwitchConnectionShowStatus()
+{
+    if(!twitchWebSocket || !(twitchWebSocket instanceof WebSocket))
+        htmlBtnChatConnect.style.borderColor = "red";
+    else if(twitchWebSocket.readyState==1)
+        htmlBtnChatConnect.style.borderColor = "green";
+    else if(twitchWebSocket.readyState==0)
+        htmlBtnChatConnect.style.borderColor = "yellow";
+    else if(twitchWebSocket.readyState==2)
+        htmlBtnChatConnect.style.borderColor = "orange";
+    else//if(twitchWebSocket.readyState==3)
+        htmlBtnChatConnect.style.borderColor = "magenta";
+    /*WebSocket: readyState property
+    WebSocket.CONNECTING (0)
+    Socket has been created. The connection is not yet open.
+    WebSocket.OPEN (1)
+    The connection is open and ready to communicate.
+    WebSocket.CLOSING (2)
+    The connection is in the process of closing.
+    WebSocket.CLOSED (3)
+    The connection is closed or couldn't be opened.*/
+}
 
 GetFormTwitchData();
 function GetFormTwitchData()
@@ -161,7 +215,7 @@ function TwitchWebSocket_Recieve(message)
         htmlChatMessageDivs[0].div.innerHTML = `${chatMessagesPrefix}<span style="color:cyan">${parsedSMS.sender}</span>: ${parsedSMS.sms}`;
 }
 
-function TwitchWebSocket_Send(message)
+function TwitchWebSocket_SendImmediate(message)
 {
     if(message==null || message=="")
         return;
@@ -190,7 +244,7 @@ function TwitchViewStream()
 const divChatMessage = document.getElementById("inputSendChatMessage");
 function ChatMessage_Send()
 {
-    TwitchWebSocket_Send(divChatMessage.value);
+    TwitchWebSocket_SendQueue(divChatMessage.value);
     divChatMessage.value = "";
 }
 
@@ -521,7 +575,7 @@ function SD_Join(classname)
     if(charPos == -1)
         return;
     //otherwise, join
-    isShortcut(classname)? TwitchWebSocket_Send(`${classname.substring(0,1)}!${classname.substring(0,1)}`) : TwitchWebSocket_Send(`!${classname}`);
+    isShortcut(classname)? TwitchWebSocket_SendQueue(`${classname.substring(0,1)}!${classname.substring(0,1)}`) : TwitchWebSocket_SendQueue(`!${classname}`);
     ToggleShortcut(classname);
     characterSlots[charPos] = classname;
     divsSlotToggleButtons[charPos].innerHTML = classname;
@@ -529,7 +583,7 @@ function SD_Join(classname)
 
 function SD_Vote(votenum)
 {
-    isShortcut("vote")? TwitchWebSocket_Send(`!v${votenum}`) : TwitchWebSocket_Send(`!vote${votenum}`);
+    isShortcut("vote")? TwitchWebSocket_SendQueue(`!v${votenum}`) : TwitchWebSocket_SendQueue(`!vote${votenum}`);
     ToggleShortcut("vote");
 }
 
@@ -572,7 +626,7 @@ function SD_Altar()
 
 function SD_AwakeAFK()
 {
-    isShortcut("awake")? TwitchWebSocket_Send("!") : TwitchWebSocket_Send("!awake");
+    isShortcut("awake")? TwitchWebSocket_SendQueue("!") : TwitchWebSocket_SendQueue("!awake");
     ToggleShortcut("awake");
 }
 
@@ -584,9 +638,9 @@ function SD_Leave()
 function MultiselectCommandBuilder(command)
 {
     if(selectionMode == -1)
-        TwitchWebSocket_Send(command);
+        TwitchWebSocket_SendQueue(command);
     else if(selectionMode == 0)
-        TwitchWebSocket_Send(`${characterSlots[singleSlot].substring(0,1)}${command}`);
+        TwitchWebSocket_SendQueue(`${characterSlots[singleSlot].substring(0,1)}${command}`);
     else if(selectionMode==1 || selectionMode == 2)
     {
         const team = [];
@@ -608,14 +662,14 @@ function MultiselectCommandBuilder(command)
                     multiCommand += " !";
                 ToggleShortcut("leave");
             }
-            TwitchWebSocket_Send(multiCommand);
+            TwitchWebSocket_SendQueue(multiCommand);
         }
     }
 }
 
 function SD_GlobalSpellCast(command)
 {
-    isShortcut("spell")? TwitchWebSocket_Send(`${command} !`) : TwitchWebSocket_Send(`${command}`);
+    isShortcut("spell")? TwitchWebSocket_SendQueue(`${command} !`) : TwitchWebSocket_SendQueue(`${command}`);
     ToggleShortcut("spell");
 }
 
