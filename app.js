@@ -54,7 +54,7 @@ function TwitchWebSocket_SendQueue(message)
 setInterval(TwitchWebSocket_CheckQueue, 1251);
 function TwitchWebSocket_CheckQueue()
 {
-    if(twitchWebSocket.readyState==1 && messageQueue.length>0 && (new Date().getTime()-lastMessageTime)>=1250)
+    if(twitchWebSocket && twitchWebSocket.readyState==1 && messageQueue.length>0 && (new Date().getTime()-lastMessageTime)>=1250)
     {
         TwitchWebSocket_SendImmediate(messageQueue.shift());
         lastMessageTime = new Date().getTime();

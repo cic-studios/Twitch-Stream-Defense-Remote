@@ -157,6 +157,7 @@
                             <!--<a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a>-->
                             <button id="btnGetOAuth" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get OAuth</button>
                             <button id="btnViewStream" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">Twitch Stream</button>
+                            <button id="btnNoSleep" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleNoSleep()">No Sleep</button>
                             <button id="btnChatConnect" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
                         </div>
                     </div>
@@ -318,7 +319,7 @@
                 <p>Made with <i class="fa-solid fa-heart" style="color: crimson;"></i> by CatInCube</p>
             </div>
         </div>
-        <!--<script type="module" src="./script.js" ></script>-->
+        <script src="./NoSleep.js"></script>
         <script src="app.js"></script>
     </body>
 </html>
