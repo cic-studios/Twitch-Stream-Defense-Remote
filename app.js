@@ -577,9 +577,12 @@ function SD_Join(classname)
             break;
         }
     }
-    //if duplicate, then exit
+    //if duplicate, then get stats and exit
     if(charPos != -1)
+    {
+        SD_GlobalSpellCast(`${classname.substring(0,1)}!stats`);
         return;
+    }
     //find empty space to fill
     for(let i = 0; i < characterSlots.length; i++)
     {
@@ -644,7 +647,7 @@ function SD_Altar()
 
 function SD_AwakeAFK()
 {
-    isShortcut("awake")? TwitchWebSocket_SendQueue("!") : TwitchWebSocket_SendQueue("!awake");
+    isShortcut("awake")? TwitchWebSocket_SendQueue("! !") : TwitchWebSocket_SendQueue("!");
     ToggleShortcut("awake");
 }
 
@@ -716,44 +719,6 @@ function SD_MultiSpellCast(command)
 /*
 Talent Special
 !sp
-
-!tarinfo
-!tars=front (f)
-!tars=back (b)
-!tars=closest (c)
-!tars=farthest (r)
-!tars=leasthealth (l)
-!tars=mosthealth (h)
-!tars=leastmaxhealth (x)
-!tars=mostmaxhealth (m)
-!tars=leastarmor (t)
-!tars=mostarmor (a)
-!tars=aoe (o)
-!tars=quickest (q)
-!tars=slowest (s)
-
-!tarp–
-!tarp=<priority1,priority2,priority2>
-armored (a)
-belowhalf (h)
-boss (b)
-burning (g)
-challenge (c)
-charmable (r)
-multiple (m)
-notboss (o)
-notmarked (x)
-spawned (p)
-oneshot (1)
-slowable (l)
-stackable (t)
-structure (s)
-stunnable (e)
-stunned (d)
-summoned (u)
-unarmored (n)
-weak (w)
-target (v)
 
 !gold
 !faction
@@ -838,4 +803,42 @@ b!stats
 !specscout
 !talintel
 !talrupture
+
+!tarinfo
+!tars=front (f)
+!tars=back (b)
+!tars=closest (c)
+!tars=farthest (r)
+!tars=leasthealth (l)
+!tars=mosthealth (h)
+!tars=leastmaxhealth (x)
+!tars=mostmaxhealth (m)
+!tars=leastarmor (t)
+!tars=mostarmor (a)
+!tars=aoe (o)
+!tars=quickest (q)
+!tars=slowest (s)
+
+!tarp–
+!tarp=<priority1,priority2,priority2>
+armored (a)
+belowhalf (h)
+boss (b)
+burning (g)
+challenge (c)
+charmable (r)
+multiple (m)
+notboss (o)
+notmarked (x)
+spawned (p)
+oneshot (1)
+slowable (l)
+stackable (t)
+structure (s)
+stunnable (e)
+stunned (d)
+summoned (u)
+unarmored (n)
+weak (w)
+target (v)
 */

@@ -212,6 +212,7 @@
                     </div>
 
                     <div id="divJoinTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright);">
+                        <div class="flexRow flexStretch crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); font-size: 12px;">*Press character again for current in-game stats</div>
                         <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
                             <button id="btnJoinArcher" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('archer')">Archer</button>
                             <button id="btnJoinRogue" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('rogue')">Rogue</button>
@@ -220,12 +221,19 @@
                             <button id="btnJoinPoisoner" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poison</button>
                             <button id="btnJoinBard" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
                         </div>
+                        <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
+                            <button id="btnGoldInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Gold</button>
+                            <button id="btnFactionInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!faction')">Faction</button>
+                            <button id="btnEssenceInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!essence')">Essence</button>
+                            <button id="btnSpecsInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specs')">Specs</button>
+                        </div>
                         <div id="joinFactionPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnGoldFactionInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Info</button>
                             <button id="btnJoinTemplar" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!jointemplar')">Templar</button>
                             <button id="btnJoinElementals" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinelementals')">Elemental</button>
                             <button id="btnJoinMagiOrder" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinmagiorder')">MagiOrder</button>
                             <button id="btnJoinWolfclan" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinwolfclan')">Wolfclan</button>
+                        </div>
+                        <div class="flexRow flexEvenly crossCenter selfCrossStretch" style="color: var(--mbaBackBright); border-style: none none dotted none; border-width: 3px">
                         </div>
                         <div id="infoLinksPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
                             <button id="btnHowtoplay" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" title="How to play" onclick="window.open('https://www.streamdefense.com/how-to-play/', '_blank')">How2</button>
@@ -331,7 +339,8 @@
                             <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!tam')">Templar<br>Ammo</button>
                             <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!wam')">Wolfclan<br>Ammo</button>
                         </div>
-                        <!--<div id="spellSeparatorPanel" class="selfCrossStretch" style="min-width: 100%; border-color: var(--mbaBackBright); border-bottom-style: dotted; border-width: 3px;"></div>-->
+                        <div class="flexRow flexEvenly crossCenter selfCrossStretch" style="color: var(--mbaBackBright); border-style: none none dotted none; border-width: 3px">
+                        </div>
                         <div id="globalSpellsPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!blt')">Blitz</button>
                             <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!dth')">Death<br>Strike</button>
