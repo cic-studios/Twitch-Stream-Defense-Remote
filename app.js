@@ -24,14 +24,18 @@ for(let i = 1; i <= 12; i++)
 
 const htmlTabButtons =
 [
+    document.getElementById("btnJoinTab"),
     document.getElementById("btnCharactersTab"),
     document.getElementById("btnSpellsTab"),
+    document.getElementById("btnTargetsTab"),
     document.getElementById("btnSpecsTab")
 ];
 const htmlTabPanels =
 [
+    document.getElementById("divJoinTab"),
     document.getElementById("divCharactersTab"),
     document.getElementById("divSpellsTab"),
+    document.getElementById("divTargetsTab"),
     document.getElementById("divSpecsTab")
 ];
 
@@ -61,7 +65,7 @@ function TwitchWebSocket_CheckQueue()
     }
 }
 
-setInterval(TwitchConnectionShowStatus, 1000);
+setInterval(TwitchConnectionShowStatus, 500);
 function TwitchConnectionShowStatus()
 {
     if(!twitchWebSocket || !(twitchWebSocket instanceof WebSocket))
@@ -241,6 +245,12 @@ function TwitchViewStream()
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function OpenLinkInNewWindow(url)
+{
+    window.open(url, '_blank');
+}
+
 const divChatMessage = document.getElementById("inputSendChatMessage");
 function ChatMessage_Send()
 {
@@ -389,6 +399,14 @@ function ToggleShortcut(classname)
         default:
             break;
     }
+}
+
+function ToggleMainMenu()
+{
+    if(htmlMainMenu.style.display=="none")
+        htmlMainMenu.style.display = "flex";
+    else
+        htmlMainMenu.style.display = "none";
 }
 
 function UpdateTabToggles(selectedTab)
@@ -694,3 +712,130 @@ function SD_MultiSpellCast(command)
             SD_GlobalSpellCast(multiCommand);
     }
 }
+
+/*
+Talent Special
+!sp
+
+!tarinfo
+!tars=front (f)
+!tars=back (b)
+!tars=closest (c)
+!tars=farthest (r)
+!tars=leasthealth (l)
+!tars=mosthealth (h)
+!tars=leastmaxhealth (x)
+!tars=mostmaxhealth (m)
+!tars=leastarmor (t)
+!tars=mostarmor (a)
+!tars=aoe (o)
+!tars=quickest (q)
+!tars=slowest (s)
+
+!tarp–
+!tarp=<priority1,priority2,priority2>
+armored (a)
+belowhalf (h)
+boss (b)
+burning (g)
+challenge (c)
+charmable (r)
+multiple (m)
+notboss (o)
+notmarked (x)
+spawned (p)
+oneshot (1)
+slowable (l)
+stackable (t)
+structure (s)
+stunnable (e)
+stunned (d)
+summoned (u)
+unarmored (n)
+weak (w)
+target (v)
+
+!gold
+!faction
+!jointemplar
+!joinelementals
+!joinmagiorder
+!joinwolfclan
+
+!essence
+a!essence
+r!essence
+f!essence
+t!essence
+p!essence
+b!essence
+
+a!stats
+r!stats
+f!stats
+t!stats
+p!stats
+b!stats
+
+!specs
+
+!specbowman
+!talpiercing
+!talfalcon
+!specsniper
+!talvulture
+!talweaken
+!specgunner
+!talgunslinger
+!talrockets
+
+!specknifethrower
+!talbounce
+!talaxe
+!specassassin
+!talcharge
+!talpoisonstrike
+!specninja
+!taldeadly
+!talspread
+
+!specpyromancer
+!talmaniac
+!talignite
+!specarcanist
+!talhaste
+!taloverdrive
+!specsaboteur
+!talbomber
+!talbarrage
+
+!specicemage
+!talchilling
+!talfreezing
+!spectrickster
+!talcharming
+!talcharisma
+!speclightningmage
+!talstunning
+!talchain
+
+!specplaguedoctor
+!talelixir
+!talnecromancer
+!specundeadarcher
+!taldoublebow
+!talraise
+!specdeathdealer
+!talempowered
+!talseed
+
+!specminstrel
+!talamplify
+!talmimic
+!speccommander
+!talbooming
+!talquickdraw
+!specscout
+!talintel
+!talrupture
+*/
