@@ -258,10 +258,10 @@ function ChatMessage_Send()
     divChatMessage.value = "";
 }
 
-let htmChatPanel = document.getElementById("RecievedChatMessagesPanel");
-let htmChatToggle = document.getElementById("btnTglChat");
+const htmChatPanel = document.getElementById("RecievedChatMessagesPanel");
+const htmChatToggle = document.getElementById("btnTglChat");
 let showChat = true;
-function ToggleChat()
+function ToggleChatVisibility()
 {
     if(showChat)
     {
