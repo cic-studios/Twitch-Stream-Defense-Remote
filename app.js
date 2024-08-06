@@ -749,7 +749,24 @@ function SD_MultiSpellCast(command)
     }
 }
 
-
+let htmChatPanel = document.getElementById("RecievedChatMessagesPanel");
+let htmChatToggle = document.getElementById("btnTglChat");
+let showChat = true;
+function ToggleChat()
+{
+    if(showChat)
+    {
+        htmChatPanel.style.display = "none";
+        htmChatToggle.innerHTML = "Show";
+        showChat = false;
+    }
+    else
+    {
+        htmChatPanel.style.display = "flex";
+        htmChatToggle.innerHTML = "Hide";
+        showChat = true;
+    }
+}
 
 const targetSorters =
 [
