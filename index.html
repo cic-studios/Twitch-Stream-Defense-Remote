@@ -221,17 +221,19 @@
                             <button id="btnJoinPoisoner" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poison</button>
                             <button id="btnJoinBard" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
                         </div>
-                        <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnGoldInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Gold</button>
-                            <button id="btnFactionInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!faction')">Faction</button>
-                            <button id="btnEssenceInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!essence')">Essence</button>
-                            <button id="btnSpecsInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specs')">Specs</button>
-                        </div>
                         <div id="joinFactionPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
                             <button id="btnJoinTemplar" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!jointemplar')">Templar</button>
                             <button id="btnJoinElementals" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinelementals')">Elemental</button>
                             <button id="btnJoinMagiOrder" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinmagiorder')">MagiOrder</button>
                             <button id="btnJoinWolfclan" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinwolfclan')">Wolfclan</button>
+                        </div>
+                        <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
+                            <button id="btnVote01" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote1</button>
+                            <button id="btnVote02" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote2</button>
+                            <button id="btnGoldInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Gold</button>
+                            <button id="btnFactionInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!faction')">Fctn</button>
+                            <button id="btnEssenceInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!essence')">Essn</button>
+                            <button id="btnSpecsInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specs')">Specs</button>
                         </div>
                         <div class="flexRow flexEvenly crossCenter selfCrossStretch" style="color: var(--mbaBackBright); border-style: none none dotted none; border-width: 3px">
                         </div>
@@ -359,7 +361,64 @@
                     </div>
 
                     <div id="divTargetsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
-                        UNDER CONSTRUCTION<br>Comming Soon!
+                        <div class="flexRow flexStretch crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); font-size: 12px;">*Choose priorities to filter by, then select your sorting option</div>
+                        <div id="targetAdminPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnTargetInfo" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarinfo')">Targeting<br>Information</button>
+                            <button id="btnRemoveFilters" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarp--')">Remove<br>Filters</button>
+                        </div>
+                        <div class="flexRow flexCenter crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); text-align:center;">Priority Filters</div>
+                        <div id="filterSelectionPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglFilterBtn0" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(0)">Armored</button>
+                            <button id="tglFilterBtn1" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(1)">BelowHalf</button>
+                            <button id="tglFilterBtn2" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(2)">Boss</button>
+                            <button id="tglFilterBtn3" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(3)">Burning</button>
+                        </div>
+                        <div id="filterSelectionPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglFilterBtn4" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(4)">Challenge</button>
+                            <button id="tglFilterBtn5" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(5)">Charmable</button>
+                            <button id="tglFilterBtn6" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(6)">Multiple</button>
+                            <button id="tglFilterBtn7" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(7)">NotBoss</button>
+                        </div>
+                        <div id="filterSelectionPanel3" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglFilterBtn8" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(8)">NotMarked</button>
+                            <button id="tglFilterBtn9" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(9)">Spawned</button>
+                            <button id="tglFilterBtn10" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(10)">OneShot</button>
+                            <button id="tglFilterBtn11" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(11)">Slowable</button>
+                        </div>
+                        <div id="filterSelectionPanel4" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglFilterBtn12" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(12)">Stackable</button>
+                            <button id="tglFilterBtn13" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(13)">Structure</button>
+                            <button id="tglFilterBtn14" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(14)">Stunnable</button>
+                            <button id="tglFilterBtn15" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(15)">Stunned</button>
+                        </div>
+                        <div id="filterSelectionPanel5" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="tglFilterBtn16" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(16)">Summon</button>
+                            <button id="tglFilterBtn17" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(17)">NoArmor</button>
+                            <button id="tglFilterBtn18" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(18)">Weak</button>
+                            <button id="tglFilterBtn19" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(19)">Target</button>
+                        </div>
+                        <div class="flexRow flexCenter crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); text-align:center;">Sorting Options</div>
+                        <div id="sortingOptionsPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnSortingOpt0" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(0)">Front</button>
+                            <button id="btnSortingOpt1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(1)">Back</button>
+                            <button id="btnSortingOpt2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(2)">Closest</button>
+                            <button id="btnSortingOpt3" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(3)">Farthest</button>
+                        </div>
+                        <div id="sortingOptionsPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnSortingOpt4" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(4)">LeastHP</button>
+                            <button id="btnSortingOpt5" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(5)">MostHP</button>
+                            <button id="btnSortingOpt6" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(6)">-MaxHP</button>
+                            <button id="btnSortingOpt7" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(7)">+MaxHP</button>
+                        </div>
+                        <div id="sortingOptionsPanel3" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnSortingOpt8" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(8)">-Armor</button>
+                            <button id="btnSortingOpt9" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(9)">+Armor</button>
+                            <button id="btnSortingOpt11" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(11)">Quickest</button>
+                            <button id="btnSortingOpt12" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(12)">Slowest</button>
+                        </div>
+                        <div id="sortingOptionsPanel4" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
+                            <button id="btnSortingOpt10" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(10)">Area Of Effect (Most Nearby)</button>
+                        </div>
                     </div>
 
                     <div id="divSpecsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">

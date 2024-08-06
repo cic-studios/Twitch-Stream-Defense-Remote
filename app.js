@@ -658,18 +658,43 @@ function SD_Leave()
 
 function MultiselectCommandBuilder(command)
 {
-    if(selectionMode == -1)
+    const isLeave = (command=="!leave");
+    if(selectionMode == -1)//ALL
+    {
+        if(isLeave)
+        {
+            if(isShortcut("leave"))
+                command += " !";
+            ToggleShortcut("leave");
+            for(let i = 0; i < characterSlots.length; i++)
+            {
+                characterSlots[i] = "";
+                divsSlotToggleButtons[i].innerHTML = `Slot ${i+1}`;
+            }
+        }
         TwitchWebSocket_SendQueue(command);
-    else if(selectionMode == 0)
+    }
+    else if(selectionMode == 0)//SINGLE
+    {
+        if(isLeave)
+        {
+            if(isShortcut("leave"))
+                command += " !";
+            ToggleShortcut("leave");
+        }
         TwitchWebSocket_SendQueue(`${characterSlots[singleSlot].substring(0,1)}${command}`);
-    else if(selectionMode==1 || selectionMode == 2)
+        if(isLeave)
+        {
+            characterSlots[singleSlot] = "";
+            divsSlotToggleButtons[singleSlot].innerHTML = `Slot ${singleSlot+1}`;
+        }
+    }
+    else if(selectionMode==1 || selectionMode == 2)//TEAM
     {
         const team = [];
-        for(let i = 0; i < 4; i++)
+        for(let i=0; i<4; i++)
         {
-            if(selectionMode==1 && toggledTeam1[i])
-                team.push(characterSlots[i]);
-            else if(selectionMode==2 && toggledTeam2[i])
+            if(((selectionMode==1 && toggledTeam1[i]) || (selectionMode==2 && toggledTeam2[i])) && (characterSlots[i]!=null && characterSlots[i]!=""))
                 team.push(characterSlots[i]);
         }
         if(team.length > 0)
@@ -677,11 +702,19 @@ function MultiselectCommandBuilder(command)
             let multiCommand = `${team[0].substring(0,1)}${command}`;
             for(let i=1; i<team.length; i++)
                 multiCommand += ` ${team[i].substring(0,1)}${command}`;
-            if(command=="!leave")
+            if(isLeave)
             {
                 if(isShortcut("leave"))
                     multiCommand += " !";
                 ToggleShortcut("leave");
+                for(let i=0; i<4; i++)
+                {
+                    if((selectionMode==1 && toggledTeam1[i]) || (selectionMode==2 && toggledTeam2[i]))
+                    {
+                        characterSlots[i] = "";
+                        divsSlotToggleButtons[i].innerHTML = `Slot ${i+1}`;
+                    }
+                }
             }
             TwitchWebSocket_SendQueue(multiCommand);
         }
@@ -714,6 +747,95 @@ function SD_MultiSpellCast(command)
         if(multiCommand.length > 0)
             SD_GlobalSpellCast(multiCommand);
     }
+}
+
+
+
+const targetSorters =
+[
+    {name: "front", shortcut: "f", isShortcut: false},
+    {name: "back", shortcut: "b", isShortcut: false},
+    {name: "closest", shortcut: "c", isShortcut: false},
+    {name: "farthest", shortcut: "f", isShortcut: false},
+    {name: "leasthealth", shortcut: "l", isShortcut: false},
+    {name: "mosthealth", shortcut: "h", isShortcut: false},
+    {name: "leastmaxhealth", shortcut: "x", isShortcut: false},
+    {name: "mostmaxhealth", shortcut: "m", isShortcut: false},
+    {name: "leastarmor", shortcut: "t", isShortcut: false},
+    {name: "mostarmor", shortcut: "a", isShortcut: false},
+    {name: "aoe", shortcut: "o", isShortcut: false},
+    {name: "quickest", shortcut: "q", isShortcut: false},
+    {name: "slowest", shortcut: "s", isShortcut: false}
+]
+
+const targetFilters =
+[
+    {name: "armored", shortcut: "a", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn0")},
+    {name: "belowhalf", shortcut: "h", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn1")},
+    {name: "boss", shortcut: "b", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn2")},
+    {name: "burning", shortcut: "g", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn3")},
+    {name: "challenge", shortcut: "c", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn4")},
+    {name: "charmable", shortcut: "r", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn5")},
+    {name: "multiple", shortcut: "m", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn6")},
+    {name: "notboss", shortcut: "o", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn7")},
+    {name: "notmarked", shortcut: "x", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn8")},
+    {name: "spawned", shortcut: "p", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn9")},
+    {name: "oneshot", shortcut: "1", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn10")},
+    {name: "slowable", shortcut: "l", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn11")},
+    {name: "stackable", shortcut: "t", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn12")},
+    {name: "structure", shortcut: "s", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn13")},
+    {name: "stunnable", shortcut: "e", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn14")},
+    {name: "stunned", shortcut: "d", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn15")},
+    {name: "summoned", shortcut: "u", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn16")},
+    {name: "unarmored", shortcut: "n", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn17")},
+    {name: "weak", shortcut: "w", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn18")},
+    {name: "target", shortcut: "v", isShortcut: false, isToggled: false, htmlToggleButton: document.getElementById("tglFilterBtn19")}
+]
+
+function ToggleFiltering(filter)
+{
+    if(filter<0 || filter>=targetFilters.length)
+        return;
+
+    if(targetFilters[filter].isToggled)
+    {
+        targetFilters[filter].htmlToggleButton.classList.remove("sdToggleOn");
+        targetFilters[filter].htmlToggleButton.classList.add("sdToggleOff");
+    }
+    else
+    {
+        targetFilters[filter].htmlToggleButton.classList.remove("sdToggleOff");
+        targetFilters[filter].htmlToggleButton.classList.add("sdToggleOn");
+    }
+    targetFilters[filter].isToggled = !targetFilters[filter].isToggled;
+}
+
+function SD_Targeting(sorting)
+{
+    let sortingCommand = targetSorters[sorting].isShortcut? `!tars=${targetSorters[sorting].shortcut}` : `!tars=${targetSorters[sorting].name}`;
+    targetSorters[sorting].isShortcut = !targetSorters[sorting].isShortcut;
+    let filterList = [];
+    for(let i=0; i<targetFilters.length; i++)
+    {
+        if(targetFilters[i].isToggled)
+        {
+            filterList.push(targetFilters[i].isShortcut? targetFilters[i].shortcut : targetFilters[i].name);
+            targetFilters[i].isShortcut = !targetFilters[i].isShortcut;
+        }
+    }
+        
+    let filterCommand = null;
+    if(filterList.length > 0)
+    {
+        filterCommand = "!tarp=";
+        for(let i=0; i<filterList.length; i++)
+            i<filterList.length-1? filterCommand+=`${filterList[i]},` : filterCommand+=filterList[i];
+    }
+    else
+    {
+        filterCommand = "!tarp--";
+    }
+    TwitchWebSocket_SendQueue(`${sortingCommand} ${filterCommand}`);
 }
 
 /*
@@ -803,6 +925,7 @@ b!stats
 !specscout
 !talintel
 !talrupture
+
 
 !tarinfo
 !tars=front (f)
