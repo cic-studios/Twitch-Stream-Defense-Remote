@@ -258,6 +258,25 @@ function ChatMessage_Send()
     divChatMessage.value = "";
 }
 
+let htmChatPanel = document.getElementById("RecievedChatMessagesPanel");
+let htmChatToggle = document.getElementById("btnTglChat");
+let showChat = true;
+function ToggleChat()
+{
+    if(showChat)
+    {
+        htmChatPanel.style.display = "none";
+        htmChatToggle.innerHTML = "Show";
+        showChat = false;
+    }
+    else
+    {
+        htmChatPanel.style.display = "flex";
+        htmChatToggle.innerHTML = "Hide";
+        showChat = true;
+    }
+}
+
 let selectedTab = 0;
 let characterSlots = ["","","",""];
 let selectionMode = -1; //-1=all 0=single 1=team1 2=team2
@@ -746,25 +765,6 @@ function SD_MultiSpellCast(command)
             i<towernums.length-1? multiCommand+=`${command}${towernums[i]} ` : multiCommand+=`${command}${towernums[i]}`;
         if(multiCommand.length > 0)
             SD_GlobalSpellCast(multiCommand);
-    }
-}
-
-let htmChatPanel = document.getElementById("RecievedChatMessagesPanel");
-let htmChatToggle = document.getElementById("btnTglChat");
-let showChat = true;
-function ToggleChat()
-{
-    if(showChat)
-    {
-        htmChatPanel.style.display = "none";
-        htmChatToggle.innerHTML = "Show";
-        showChat = false;
-    }
-    else
-    {
-        htmChatPanel.style.display = "flex";
-        htmChatToggle.innerHTML = "Hide";
-        showChat = true;
     }
 }
 
