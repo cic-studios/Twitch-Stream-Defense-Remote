@@ -159,57 +159,57 @@
                         </div>
                         <div id = "divConnectButtons" class="flexRow flexAround margin5 gap10">
                             <!--<a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a>-->
-                            <button id="btnGetOAuth" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get OAuth</button>
-                            <button id="btnViewStream" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">Twitch Stream</button>
-                            <button id="btnChatConnect" class="Button" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
+                            <button id="btnGetOAuth" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get OAuth</button>
+                            <button id="btnViewStream" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">Twitch Stream</button>
+                            <button id="btnChatConnect" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
                         </div>
                     </div>
 
                     <div id="mainOptionsPanel" class="flexCol flexAround crossStretch selfCrossStretch pad5 gap5">
                         <div id="controlPanel" class="flexRow flexAround crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnReset" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Reset()">Reset Slots</button>
-                            <button id="btnNoSleep" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleNoSleep()">No Sleep</button>
-                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake AFK</button>
+                            <button id="btnReset" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Reset()">Reset Slots</button>
+                            <button id="btnNoSleep" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleNoSleep()">No Sleep</button>
+                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake AFK</button>
                         </div>
                     </div>
 
                     <div id="modeTabsPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
                         <div class="selfCrossEnd sdTabPlaceholder"></div>
-                        <button id="btnJoinTab" class="selfFlexGrow sdTabOn" style="padding: 2px 5px;" onclick="TabToggleClick(0)">Join</button>
+                        <button id="btnJoinTab" class="selfFlexGrow sdChunkyButton sdTabOn" style="padding: 2px 5px;" onclick="TabToggleClick(0)">Join</button>
                         <div class="selfCrossEnd sdTabPlaceholder"></div>
-                        <button id="btnCharactersTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(1)">Characters</button>
+                        <button id="btnCharactersTab" class="selfFlexGrow sdChunkyButton sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(1)">Characters</button>
                         <div class="selfCrossEnd sdTabPlaceholder"></div>
-                        <button id="btnSpellsTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(2)">Spells</button>
+                        <button id="btnSpellsTab" class="selfFlexGrow sdChunkyButton sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(2)">Spells</button>
                         <div class="selfCrossEnd sdTabPlaceholder"></div>
-                        <button id="btnTargetsTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(3)">Targets</button>
+                        <button id="btnTargetsTab" class="selfFlexGrow sdChunkyButton sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(3)">Targets</button>
                         <div class="selfCrossEnd sdTabPlaceholder"></div>
-                        <button id="btnSpecsTab" class="selfFlexGrow sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(4)">Specs</button>
+                        <button id="btnSpecsTab" class="selfFlexGrow sdChunkyButton sdTabOff" style="padding: 2px 5px;" onclick="TabToggleClick(4)">Specs</button>
                         <div class="selfFlexGrow selfCrossEnd sdTabPlaceholder"></div>
                     </div>
 
                     <div id="divJoinTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright);">
                         <div class="flexRow flexStretch crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); font-size: 12px;">*Press character again for current in-game stats</div>
                         <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnJoinArcher" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('archer')">Archer</button>
-                            <button id="btnJoinRogue" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('rogue')">Rogue</button>
-                            <button id="btnJoinFiremage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('firemage')">FireMg</button>
-                            <button id="btnJoinTimemage" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('timemage')">TimeMg</button>
-                            <button id="btnJoinPoisoner" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poison</button>
-                            <button id="btnJoinBard" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
+                            <button id="btnJoinArcher" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('archer')">Archer</button>
+                            <button id="btnJoinRogue" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('rogue')">Rogue</button>
+                            <button id="btnJoinFiremage" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('firemage')">FireMg</button>
+                            <button id="btnJoinTimemage" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('timemage')">TimeMg</button>
+                            <button id="btnJoinPoisoner" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('poisoner')">Poison</button>
+                            <button id="btnJoinBard" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Join('bard')">Bard</button>
                         </div>
                         <div id="joinFactionPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnJoinTemplar" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!jointemplar')">Templar</button>
-                            <button id="btnJoinElementals" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinelementals')">Elemental</button>
-                            <button id="btnJoinMagiOrder" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinmagiorder')">MagiOrder</button>
-                            <button id="btnJoinWolfclan" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinwolfclan')">Wolfclan</button>
+                            <button id="btnJoinTemplar" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!jointemplar')">Templar</button>
+                            <button id="btnJoinElementals" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinelementals')">Elemental</button>
+                            <button id="btnJoinMagiOrder" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinmagiorder')">MagiOrder</button>
+                            <button id="btnJoinWolfclan" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!joinwolfclan')">Wolfclan</button>
                         </div>
                         <div id="joinCharacterPanel" class="flexRow flexStretch crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
-                            <button id="btnVote01" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote1</button>
-                            <button id="btnVote02" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote2</button>
-                            <button id="btnGoldInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Gold</button>
-                            <button id="btnFactionInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!faction')">Fctn</button>
-                            <button id="btnEssenceInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!essence')">Essn</button>
-                            <button id="btnSpecsInfo" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specs')">Specs</button>
+                            <button id="btnVote01" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote1</button>
+                            <button id="btnVote02" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote2</button>
+                            <button id="btnGoldInfo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!gold')">Gold</button>
+                            <button id="btnFactionInfo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!faction')">Fctn</button>
+                            <button id="btnEssenceInfo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!essence')">Essn</button>
+                            <button id="btnSpecsInfo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specs')">Specs</button>
                         </div>
                         <div class="flexRow flexEvenly crossCenter selfCrossStretch" style="color: var(--mbaBackBright); border-style: none none dotted none; border-width: 3px">
                         </div>
@@ -248,152 +248,152 @@
 
                     <div id="divCharactersTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
                         <div id="characterSlotPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnCharacterSlot1" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(0)">Slot 1</button>
-                            <button id="btnCharacterSlot2" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(1)">Slot 2</button>
-                            <button id="btnCharacterSlot3" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(2)">Slot 3</button>
-                            <button id="btnCharacterSlot4" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(3)">Slot 4</button>
+                            <button id="btnCharacterSlot1" class="selfFlexGrow sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(0)">Slot 1</button>
+                            <button id="btnCharacterSlot2" class="selfFlexGrow sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(1)">Slot 2</button>
+                            <button id="btnCharacterSlot3" class="selfFlexGrow sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(2)">Slot 3</button>
+                            <button id="btnCharacterSlot4" class="selfFlexGrow sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SlotToggleClick(3)">Slot 4</button>
                         </div>
                         <div id="groupSelectionPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnGroupSelectionAll" class="selfFlexGrow sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(-1)">All</button>
-                            <button id="btnGroupSelectionSingle" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(0)">Single</button>
-                            <button id="btnGroupSelectionTeam1" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(1)">Team 1</button>
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(2)">Team 2</button>
+                            <button id="btnGroupSelectionAll" class="selfFlexGrow sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(-1)">All</button>
+                            <button id="btnGroupSelectionSingle" class="selfFlexGrow sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(0)">Single</button>
+                            <button id="btnGroupSelectionTeam1" class="selfFlexGrow sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(1)">Team 1</button>
+                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="SelectToggleClick(2)">Team 2</button>
                         </div>
                         <div id="towersPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnVote1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote<br>1</button>
-                            <button id="btnTower1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(1)">Twr<br>1</button>
-                            <button id="btnTower2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(2)">Twr<br>2</button>
-                            <button id="btnTower3" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(3)">Twr<br>3</button>
-                            <button id="btnTower4" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(4)">Twr<br>4</button>
-                            <button id="btnTower5" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(5)">Twr<br>5</button>
-                            <button id="btnTower6" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(6)">Twr<br>6</button>
+                            <button id="btnVote1" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(1)">Vote<br>1</button>
+                            <button id="btnTower1" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(1)">Twr<br>1</button>
+                            <button id="btnTower2" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(2)">Twr<br>2</button>
+                            <button id="btnTower3" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(3)">Twr<br>3</button>
+                            <button id="btnTower4" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(4)">Twr<br>4</button>
+                            <button id="btnTower5" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(5)">Twr<br>5</button>
+                            <button id="btnTower6" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(6)">Twr<br>6</button>
                         </div>
                         <div id="towersPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnVote2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote<br>2</button>
-                            <button id="btnTower7" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(7)">Twr<br>7</button>
-                            <button id="btnTower8" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(8)">Twr<br>8</button>
-                            <button id="btnTower9" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(9)">Twr<br>9</button>
-                            <button id="btnTower10" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(10)">Twr<br>10</button>
-                            <button id="btnTower11" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(11)">Twr<br>11</button>
-                            <button id="btnTower12" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(12)">Twr<br>12</button>
+                            <button id="btnVote2" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Vote(2)">Vote<br>2</button>
+                            <button id="btnTower7" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(7)">Twr<br>7</button>
+                            <button id="btnTower8" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(8)">Twr<br>8</button>
+                            <button id="btnTower9" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(9)">Twr<br>9</button>
+                            <button id="btnTower10" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(10)">Twr<br>10</button>
+                            <button id="btnTower11" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(11)">Twr<br>11</button>
+                            <button id="btnTower12" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Tower(12)">Twr<br>12</button>
                         </div>
                         <div id="commandsPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnTalentSkill" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!sp')">Tlnt<br>Skill</button>
-                            <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('up')">Pwr<br>Up</button>
-                            <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('down')">Pwr<br>Dn</button>
-                            <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('lock')">Pwr<br>Lock</button>
-                            <button id="btnTrain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Train()">Trn</button>
-                            <button id="btnAltar" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Altar()">Altr</button>
-                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Leave()">Lve</button>
+                            <button id="btnTalentSkill" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!sp')">Tlnt<br>Skill</button>
+                            <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('up')">Pwr<br>Up</button>
+                            <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('down')">Pwr<br>Dn</button>
+                            <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Power('lock')">Pwr<br>Lock</button>
+                            <button id="btnTrain" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Train()">Trn</button>
+                            <button id="btnAltar" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Altar()">Altr</button>
+                            <button id="btnLeave" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Leave()">Lve</button>
                         </div>
                     </div>
 
                     <div id="divSpellsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
                         <div id="towerSelectionPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglTower1" class="selfFlexGrow selfCrossStretch sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(0)">Tower<br>1</button>
-                            <button id="tglTower2" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(1)">Tower<br>2</button>
-                            <button id="tglTower3" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(2)">Tower<br>3</button>
-                            <button id="tglTower4" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(3)">Tower<br>4</button>
-                            <button id="tglTower5" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(4)">Tower<br>5</button>
-                            <button id="tglTower6" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(5)">Tower<br>6</button>
+                            <button id="tglTower1" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOn" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(0)">Tower<br>1</button>
+                            <button id="tglTower2" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(1)">Tower<br>2</button>
+                            <button id="tglTower3" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(2)">Tower<br>3</button>
+                            <button id="tglTower4" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(3)">Tower<br>4</button>
+                            <button id="tglTower5" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(4)">Tower<br>5</button>
+                            <button id="tglTower6" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(5)">Tower<br>6</button>
                         </div>
                         <div id="towerSelectionPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglTower7" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(6)">Tower<br>7</button>
-                            <button id="tglTower8" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(7)">Tower<br>8</button>
-                            <button id="tglTower9" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(8)">Tower<br>9</button>
-                            <button id="tglTower10" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(9)">Tower<br>10</button>
-                            <button id="tglTower11" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(10)">Tower<br>11</button>
-                            <button id="tglTower12" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(11)">Tower<br>12</button>
+                            <button id="tglTower7" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(6)">Tower<br>7</button>
+                            <button id="tglTower8" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(7)">Tower<br>8</button>
+                            <button id="tglTower9" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(8)">Tower<br>9</button>
+                            <button id="tglTower10" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(9)">Tower<br>10</button>
+                            <button id="tglTower11" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(10)">Tower<br>11</button>
+                            <button id="tglTower12" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="TowerToggleClick(11)">Tower<br>12</button>
                         </div>
                         <div id="runeSpellPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!pwr')">Power<br>Rune</button>
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!rpd')">Rapid<br>Rune</button>
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!xpr')">Exp.<br>Rune</button>
-                            <button id="btnGroupSelectionAll" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!arm')">Armor<br>Ammo</button>
+                            <button id="btnPowerRune" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!pwr')">Power<br>Rune</button>
+                            <button id="btnRapidRune" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!rpd')">Rapid<br>Rune</button>
+                            <button id="btnExpRune" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!xpr')">Exp.<br>Rune</button>
+                            <button id="btnArmorAmmo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!arm')">Armor<br>Ammo</button>
                         </div>
                         <div id="ammoSpellPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnGroupSelectionSingle" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!eam')">Elemental<br>Ammo</button>
-                            <button id="btnGroupSelectionTeam1" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!mam')">Magi<br>Ammo</button>
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!tam')">Templar<br>Ammo</button>
-                            <button id="btnGroupSelectionTeam2" class="selfFlexGrow" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!wam')">Wolfclan<br>Ammo</button>
+                            <button id="btnElementalAmmo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!eam')">Elemental<br>Ammo</button>
+                            <button id="btnMagiAmmo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!mam')">Magi<br>Ammo</button>
+                            <button id="btnTemplarAmmo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!tam')">Templar<br>Ammo</button>
+                            <button id="btnWolfclanAmmo" class="selfFlexGrow sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_MultiSpellCast('!wam')">Wolfclan<br>Ammo</button>
                         </div>
                         <div class="flexRow flexEvenly crossCenter selfCrossStretch" style="color: var(--mbaBackBright); border-style: none none dotted none; border-width: 3px">
                         </div>
                         <div id="globalSpellsPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnPowerUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!blt')">Blitz</button>
-                            <button id="btnPowerDown" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!dth')">Death<br>Strike</button>
-                            <button id="btnPowerLock" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!sup')">Supply<br>Drop</button>
-                            <button id="btnTrain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!xpp')">Exp.<br>Potion</button>
-                            <button id="btnAltar" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!frz')">Freeze<br>Time</button>
-                            <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!hst')">Haste</button>
+                            <button id="btnBlitz" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!blt')">Blitz</button>
+                            <button id="btnDeathStrike" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!dth')">Death<br>Strike</button>
+                            <button id="btnSupplyDrop" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!sup')">Supply<br>Drop</button>
+                            <button id="btnExpPotion" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!xpp')">Exp.<br>Potion</button>
+                            <button id="btnFreezeTime" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!frz')">Freeze<br>Time</button>
+                            <button id="btnHaste" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!hst')">Haste</button>
                         </div>
                         <div id="globalSpellsPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnLevelUp" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lvl')">LevelUp</button>
-                            <button id="btnLuck" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lck')">Luck</button>
-                            <button id="btnMassMastery" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!mss')">Mass<br>Mastery</button>
-                            <button id="btnPowerTome" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!pwt')">Power<br>Tome</button>
-                            <button id="btnTrainingTome" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!trn')">Training<br>Tome</button>
+                            <button id="btnLevelUp" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lvl')">LevelUp</button>
+                            <button id="btnLuck" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!lck')">Luck</button>
+                            <button id="btnMassMastery" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!mss')">Mass<br>Mastery</button>
+                            <button id="btnPowerTome" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!pwt')">Power<br>Tome</button>
+                            <button id="btnTrainingTome" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!trn')">Training<br>Tome</button>
                         </div>
                     </div>
 
                     <div id="divTargetsTab" class="flexCol flexStretch crossStretch selfCrossStretch pad5 gap5" style="color: var(--mbaBackBright); display: none;">
                         <div class="flexRow flexStretch crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); font-size: 12px;">*Choose priorities to filter by, then select your sorting option</div>
                         <div id="targetAdminPanel" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnTargetInfo" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarinfo')">Targeting<br>Information</button>
-                            <button id="btnRemoveFilters" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarp--')">Remove<br>Filters</button>
+                            <button id="btnTargetInfo" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarinfo')">Targeting<br>Information</button>
+                            <button id="btnRemoveFilters" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!tarp--')">Remove<br>Filters</button>
                         </div>
                         <div class="flexRow flexCenter crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); text-align:center;">Priority Filters</div>
                         <div id="filterSelectionPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglFilterBtn0" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(0)">Armored</button>
-                            <button id="tglFilterBtn1" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(1)">BelowHalf</button>
-                            <button id="tglFilterBtn2" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(2)">Boss</button>
-                            <button id="tglFilterBtn3" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(3)">Burning</button>
+                            <button id="tglFilterBtn0" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(0)">Armored</button>
+                            <button id="tglFilterBtn1" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(1)">BelowHalf</button>
+                            <button id="tglFilterBtn2" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(2)">Boss</button>
+                            <button id="tglFilterBtn3" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(3)">Burning</button>
                         </div>
                         <div id="filterSelectionPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglFilterBtn4" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(4)">Challenge</button>
-                            <button id="tglFilterBtn5" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(5)">Charmable</button>
-                            <button id="tglFilterBtn6" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(6)">Multiple</button>
-                            <button id="tglFilterBtn7" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(7)">NotBoss</button>
+                            <button id="tglFilterBtn4" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(4)">Challenge</button>
+                            <button id="tglFilterBtn5" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(5)">Charmable</button>
+                            <button id="tglFilterBtn6" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(6)">Multiple</button>
+                            <button id="tglFilterBtn7" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(7)">NotBoss</button>
                         </div>
                         <div id="filterSelectionPanel3" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglFilterBtn8" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(8)">NotMarked</button>
-                            <button id="tglFilterBtn9" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(9)">Spawned</button>
-                            <button id="tglFilterBtn10" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(10)">OneShot</button>
-                            <button id="tglFilterBtn11" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(11)">Slowable</button>
+                            <button id="tglFilterBtn8" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(8)">NotMarked</button>
+                            <button id="tglFilterBtn9" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(9)">Spawned</button>
+                            <button id="tglFilterBtn10" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(10)">OneShot</button>
+                            <button id="tglFilterBtn11" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(11)">Slowable</button>
                         </div>
                         <div id="filterSelectionPanel4" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglFilterBtn12" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(12)">Stackable</button>
-                            <button id="tglFilterBtn13" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(13)">Structure</button>
-                            <button id="tglFilterBtn14" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(14)">Stunnable</button>
-                            <button id="tglFilterBtn15" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(15)">Stunned</button>
+                            <button id="tglFilterBtn12" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(12)">Stackable</button>
+                            <button id="tglFilterBtn13" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(13)">Structure</button>
+                            <button id="tglFilterBtn14" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(14)">Stunnable</button>
+                            <button id="tglFilterBtn15" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(15)">Stunned</button>
                         </div>
                         <div id="filterSelectionPanel5" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="tglFilterBtn16" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(16)">Summon</button>
-                            <button id="tglFilterBtn17" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(17)">NoArmor</button>
-                            <button id="tglFilterBtn18" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(18)">Weak</button>
-                            <button id="tglFilterBtn19" class="selfFlexGrow selfCrossStretch sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(19)">Target</button>
+                            <button id="tglFilterBtn16" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(16)">Summon</button>
+                            <button id="tglFilterBtn17" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(17)">NoArmor</button>
+                            <button id="tglFilterBtn18" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(18)">Weak</button>
+                            <button id="tglFilterBtn19" class="selfFlexGrow selfCrossStretch sdThickButton sdToggleOff" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleFiltering(19)">Target</button>
                         </div>
                         <div class="flexRow flexCenter crossStretch flowWrap flowStart selfFlexGrow selfCrossStretch" style="color: var(--mbaBackBright); text-align:center;">Sorting Options</div>
                         <div id="sortingOptionsPanel1" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnSortingOpt0" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(0)">Front</button>
-                            <button id="btnSortingOpt1" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(1)">Back</button>
-                            <button id="btnSortingOpt2" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(2)">Closest</button>
-                            <button id="btnSortingOpt3" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(3)">Farthest</button>
+                            <button id="btnSortingOpt0" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(0)">Front</button>
+                            <button id="btnSortingOpt1" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(1)">Back</button>
+                            <button id="btnSortingOpt2" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(2)">Closest</button>
+                            <button id="btnSortingOpt3" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(3)">Farthest</button>
                         </div>
                         <div id="sortingOptionsPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnSortingOpt4" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(4)">LeastHP</button>
-                            <button id="btnSortingOpt5" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(5)">MostHP</button>
-                            <button id="btnSortingOpt6" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(6)">-MaxHP</button>
-                            <button id="btnSortingOpt7" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(7)">+MaxHP</button>
+                            <button id="btnSortingOpt4" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(4)">LeastHP</button>
+                            <button id="btnSortingOpt5" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(5)">MostHP</button>
+                            <button id="btnSortingOpt6" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(6)">-MaxHP</button>
+                            <button id="btnSortingOpt7" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(7)">+MaxHP</button>
                         </div>
                         <div id="sortingOptionsPanel3" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnSortingOpt8" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(8)">-Armor</button>
-                            <button id="btnSortingOpt9" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(9)">+Armor</button>
-                            <button id="btnSortingOpt11" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(11)">Quickest</button>
-                            <button id="btnSortingOpt12" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(12)">Slowest</button>
+                            <button id="btnSortingOpt8" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(8)">-Armor</button>
+                            <button id="btnSortingOpt9" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(9)">+Armor</button>
+                            <button id="btnSortingOpt11" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(11)">Quickest</button>
+                            <button id="btnSortingOpt12" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(12)">Slowest</button>
                         </div>
                         <div id="sortingOptionsPanel4" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnSortingOpt10" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(10)">Area Of Effect (Most Nearby)</button>
+                            <button id="btnSortingOpt10" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Targeting(10)">Area Of Effect (Most Nearby)</button>
                         </div>
                     </div>
 
@@ -404,19 +404,19 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel2" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecbowman" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specbowman')">Bowman</button>
-                            <button id="btntalpiercing" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talpiercing')">Piercing</button>
-                            <button id="btntalfalcon" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talfalcon')">Falcon</button>
+                            <button id="btnspecbowman" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specbowman')">Bowman</button>
+                            <button id="btntalpiercing" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talpiercing')">Piercing</button>
+                            <button id="btntalfalcon" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talfalcon')">Falcon</button>
                         </div>
                         <div id="globalSpecsPanel3" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecsniper" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specsniper')">Sniper</button>
-                            <button id="btntalvulture" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talvulture')">Vulture</button>
-                            <button id="btntalweaken" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talweaken')">Weaken</button>
+                            <button id="btnspecsniper" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specsniper')">Sniper</button>
+                            <button id="btntalvulture" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talvulture')">Vulture</button>
+                            <button id="btntalweaken" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talweaken')">Weaken</button>
                         </div>
                         <div id="globalSpecsPanel4" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecgunner" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specgunner')">Gunner</button>
-                            <button id="btntalgunslinger" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talgunslinger')">Gunslinger</button>
-                            <button id="btntalrockets" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talrockets')">Rockets</button>
+                            <button id="btnspecgunner" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specgunner')">Gunner</button>
+                            <button id="btntalgunslinger" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talgunslinger')">Gunslinger</button>
+                            <button id="btntalrockets" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talrockets')">Rockets</button>
                         </div>
                         <div id="globalSpecsPanel5" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Rogues</div>
@@ -424,19 +424,19 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel6" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecknifethrower" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specknifethrower')">KnifeThrowing</button>
-                            <button id="btntalbounce" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbounce')">Bounce</button>
-                            <button id="btntalaxe" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talaxe')">Axe</button>
+                            <button id="btnspecknifethrower" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specknifethrower')">KnifeThrowing</button>
+                            <button id="btntalbounce" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbounce')">Bounce</button>
+                            <button id="btntalaxe" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talaxe')">Axe</button>
                         </div>
                         <div id="globalSpecsPanel7" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecassassin" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specassassin')">Assassin</button>
-                            <button id="btntalcharge" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharge')">Charge</button>
-                            <button id="btntalpoisonstrike" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talpoisonstrike')">PoisonStrike</button>
+                            <button id="btnspecassassin" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specassassin')">Assassin</button>
+                            <button id="btntalcharge" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharge')">Charge</button>
+                            <button id="btntalpoisonstrike" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talpoisonstrike')">PoisonStrike</button>
                         </div>
                         <div id="globalSpecsPanel8" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecninja" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specninja')">Ninja</button>
-                            <button id="btntaldeadly" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taldeadly')">Deadly</button>
-                            <button id="btntalspread" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talspread')">Spread</button>
+                            <button id="btnspecninja" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specninja')">Ninja</button>
+                            <button id="btntaldeadly" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taldeadly')">Deadly</button>
+                            <button id="btntalspread" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talspread')">Spread</button>
                         </div>
                         <div id="globalSpecsPanel9" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">FireMages</div>
@@ -444,19 +444,19 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel10" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecpyromancer" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specpyromancer')">Pyromancer</button>
-                            <button id="btntalmaniac" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talmaniac')">Maniac</button>
-                            <button id="btntalignite" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talignite')">Ignite</button>
+                            <button id="btnspecpyromancer" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specpyromancer')">Pyromancer</button>
+                            <button id="btntalmaniac" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talmaniac')">Maniac</button>
+                            <button id="btntalignite" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talignite')">Ignite</button>
                         </div>
                         <div id="globalSpecsPanel11" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecarcanist" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specarcanist')">Arcanist</button>
-                            <button id="btntalhaste" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talhaste')">Haste</button>
-                            <button id="btntaloverdrive" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taloverdrive')">Overdrive</button>
+                            <button id="btnspecarcanist" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specarcanist')">Arcanist</button>
+                            <button id="btntalhaste" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talhaste')">Haste</button>
+                            <button id="btntaloverdrive" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taloverdrive')">Overdrive</button>
                         </div>
                         <div id="globalSpecsPanel12" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecsaboteur" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specsaboteur')">Saboteur</button>
-                            <button id="btntalbomber" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbomber')">Bomber</button>
-                            <button id="btntalbarrage" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbarrage')">Barrage</button>
+                            <button id="btnspecsaboteur" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specsaboteur')">Saboteur</button>
+                            <button id="btntalbomber" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbomber')">Bomber</button>
+                            <button id="btntalbarrage" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbarrage')">Barrage</button>
                         </div>
                         <div id="globalSpecsPanel13" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">TimeMages</div>
@@ -464,19 +464,19 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel14" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecicemage" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specicemage')">IceMage</button>
-                            <button id="btntalchilling" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talchilling')">Chilling</button>
-                            <button id="btntalfreezing" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talfreezing')">Freezing</button>
+                            <button id="btnspecicemage" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specicemage')">IceMage</button>
+                            <button id="btntalchilling" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talchilling')">Chilling</button>
+                            <button id="btntalfreezing" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talfreezing')">Freezing</button>
                         </div>
                         <div id="globalSpecsPanel15" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspectrickster" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!spectrickster')">Trickster</button>
-                            <button id="btntalcharming" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharming')">Charming</button>
-                            <button id="btntalcharisma" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharisma')">Charisma</button>
+                            <button id="btnspectrickster" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!spectrickster')">Trickster</button>
+                            <button id="btntalcharming" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharming')">Charming</button>
+                            <button id="btntalcharisma" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talcharisma')">Charisma</button>
                         </div>
                         <div id="globalSpecsPanel16" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspeclightningmage" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!speclightningmage')">LightningMage</button>
-                            <button id="btntalstunning" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talstunning')">Stunning</button>
-                            <button id="btntalchain" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talchain')">Chain</button>
+                            <button id="btnspeclightningmage" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!speclightningmage')">LightningMage</button>
+                            <button id="btntalstunning" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talstunning')">Stunning</button>
+                            <button id="btntalchain" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talchain')">Chain</button>
                         </div>
                         <div id="globalSpecsPanel13" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Poisoners</div>
@@ -484,19 +484,19 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel14" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecplaguedoctor" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specplaguedoctor')">PlagueDoctor</button>
-                            <button id="btntalelixir" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talelixir')">Elixir</button>
-                            <button id="btntalnecromancer" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talnecromancer')">Necromancer</button>
+                            <button id="btnspecplaguedoctor" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specplaguedoctor')">PlagueDoctor</button>
+                            <button id="btntalelixir" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talelixir')">Elixir</button>
+                            <button id="btntalnecromancer" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talnecromancer')">Necromancer</button>
                         </div>
                         <div id="globalSpecsPanel15" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecundeadarcher" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specundeadarcher')">UndeadArcher</button>
-                            <button id="btntaldoublebow" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taldoublebow')">DoubleBow</button>
-                            <button id="btntalraise" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talraise')">Raise</button>
+                            <button id="btnspecundeadarcher" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specundeadarcher')">UndeadArcher</button>
+                            <button id="btntaldoublebow" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!taldoublebow')">DoubleBow</button>
+                            <button id="btntalraise" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talraise')">Raise</button>
                         </div>
                         <div id="globalSpecsPanel16" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecdeathdealer" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specdeathdealer')">DeathDealer</button>
-                            <button id="btntalempowered" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talempowered')">Empowered</button>
-                            <button id="btntalseed" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talseed')">Seed</button>
+                            <button id="btnspecdeathdealer" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specdeathdealer')">DeathDealer</button>
+                            <button id="btntalempowered" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talempowered')">Empowered</button>
+                            <button id="btntalseed" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talseed')">Seed</button>
                         </div>
                         <div id="globalSpecsPanel13" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Bards</div>
@@ -504,26 +504,26 @@
                             <div class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px; font-weight: bold; text-align: center;">Talent2</div>
                         </div>
                         <div id="globalSpecsPanel14" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecminstrel" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specminstrel')">Minstrel</button>
-                            <button id="btntalamplify" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talamplify')">Amplify</button>
-                            <button id="btntalmimic" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talmimic')">Mimic</button>
+                            <button id="btnspecminstrel" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specminstrel')">Minstrel</button>
+                            <button id="btntalamplify" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talamplify')">Amplify</button>
+                            <button id="btntalmimic" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talmimic')">Mimic</button>
                         </div>
                         <div id="globalSpecsPanel15" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspeccommander" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!speccommander')">Commander</button>
-                            <button id="btntalbooming" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbooming')">Booming</button>
-                            <button id="btntalquickdraw" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talquickdraw')">QuickDraw</button>
+                            <button id="btnspeccommander" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!speccommander')">Commander</button>
+                            <button id="btntalbooming" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talbooming')">Booming</button>
+                            <button id="btntalquickdraw" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talquickdraw')">QuickDraw</button>
                         </div>
                         <div id="globalSpecsPanel16" class="flexRow flexStretch crossCenter selfCrossStretch gap5" style="color: var(--mbaBackBright);">
-                            <button id="btnspecscout" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specscout')">Scout</button>
-                            <button id="btntalintel" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talintel')">Intel</button>
-                            <button id="btntalrupture" class="selfFlexGrow selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talrupture')">Rupture</button>
+                            <button id="btnspecscout" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!specscout')">Scout</button>
+                            <button id="btntalintel" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talintel')">Intel</button>
+                            <button id="btntalrupture" class="selfFlexGrow selfCrossStretch sdThickButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_GlobalSpellCast('!talrupture')">Rupture</button>
                         </div>
                     </div>
 
                     <div id="SendChatMessagePanel" class="flexRow flexEnd crossCenter selfCrossStretch pad5" style="color: var(--mbaBackBright); border-style: solid none none none; border-width: 3px;">
-                        <button id="btnTglChat" class="selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleChatVisibility()">Hide</button>
+                        <button id="btnTglChat" class="selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleChatVisibility()">Hide</button>
                         <input id="inputSendChatMessage" type="text" name="inputSendChatMessage" placeholder="Chat Message" class="selfFlexGrow selfCrossStretch" onkeydown="if (event.key == 'Enter'){ChatMessage_Send()}"/>
-                        <button id="btnSendChatMessage" class="selfCrossStretch" style="padding: 2px 5px; border-radius: 10px;" onclick="ChatMessage_Send()">Send</button>
+                        <button id="btnSendChatMessage" class="selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="ChatMessage_Send()">Send</button>
                     </div>
                     <div id="RecievedChatMessagesPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5" style="color:var(--mbaBackBright); position: relative;">
                         <div class="sdBackground" style="z-index:1;"></div>

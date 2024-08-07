@@ -398,6 +398,16 @@ body
     border-width: 3px;
     min-width: 6px;
 }
+.sdChunkyButton
+{
+    cursor: pointer;
+    min-height: 25px;
+}
+.sdThickButton
+{
+    cursor: pointer;
+    min-height: 40px;
+}
 
 .sdToggleOff
 {
