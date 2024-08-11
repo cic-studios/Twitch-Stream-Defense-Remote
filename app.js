@@ -26,7 +26,11 @@ htmlBtnChatConnect.style.borderWidth = "2px";
 htmlBtnChatConnect.style.borderColor = "red";
 const htmlChatMessageDivs = [];
 for(let i = 0; i < maxChatMessages; i++)
-    htmlChatMessageDivs.push({div:document.getElementById(`divChatMessage${i}`), parsedSMS:{rawData:">", count:-1, type:"NONE", sender:"", sms:">"}});
+{
+    htmlChatMessageDivs.push({div:document.getElementById(`divChatMessage${i}`), parsedSMS:{rawData:chatMessagesPrefix, count:-1, type:"NONE", sender:"", sms:chatMessagesPrefix}});
+    htmlChatMessageDivs[i].div.innerHTML = chatMessagesPrefix;
+}
+    
 const htmlTowerToggle = [];
 for(let i = 1; i <= 12; i++)
     htmlTowerToggle.push(document.getElementById(`tglTower${i}`));
@@ -64,7 +68,7 @@ function TwitchWebSocket_SendQueue(message)
     }
 }
 
-setInterval(TwitchWebSocket_CheckQueue, 1251);
+setInterval(TwitchWebSocket_CheckQueue, 1255);
 function TwitchWebSocket_CheckQueue()
 {
     if(twitchWebSocket && twitchWebSocket.readyState==1 && messageQueue.length>0 && (new Date().getTime()-lastMessageTime)>=1250)
@@ -77,6 +81,15 @@ function TwitchWebSocket_CheckQueue()
 setInterval(TwitchConnectionShowStatus, 250);
 function TwitchConnectionShowStatus()
 {
+    /*WebSocket: readyState property
+    WebSocket.CONNECTING (0)
+    Socket has been created. The connection is not yet open.
+    WebSocket.OPEN (1)
+    The connection is open and ready to communicate.
+    WebSocket.CLOSING (2)
+    The connection is in the process of closing.
+    WebSocket.CLOSED (3)
+    The connection is closed or couldn't be opened.*/
     if(!twitchWebSocket || !(twitchWebSocket instanceof WebSocket))
     {
         htmlBtnChatConnect.style.borderColor = "red";
@@ -107,16 +120,6 @@ function TwitchConnectionShowStatus()
         if(htmlConnectionInfoSmallIcon)
             htmlConnectionInfoSmallIcon.style.borderColor = "magenta";
     }
-        
-    /*WebSocket: readyState property
-    WebSocket.CONNECTING (0)
-    Socket has been created. The connection is not yet open.
-    WebSocket.OPEN (1)
-    The connection is open and ready to communicate.
-    WebSocket.CLOSING (2)
-    The connection is in the process of closing.
-    WebSocket.CLOSED (3)
-    The connection is closed or couldn't be opened.*/
 }
 
 GetFormTwitchData();
@@ -130,6 +133,7 @@ function GetFormTwitchData()
 
 function TwitchWebSocket_Connect()
 {
+    TwitchClearChat();
     GetFormTwitchData();
     if(tChannel==null || tChannel=="")
     {
@@ -234,7 +238,7 @@ function TwitchWebSocket_Recieve(message)
     if(hideAllSystemSMS && parsedSMS.sender=="System")
         return;
 
-    for(let i=19; i>0; i--)
+    for(let i=htmlChatMessageDivs.length-1; i>0; i--)
     {
         htmlChatMessageDivs[i].div.innerHTML = htmlChatMessageDivs[i-1].div.innerHTML;
         htmlChatMessageDivs[i].parsedSMS = htmlChatMessageDivs[i-1].parsedSMS;
@@ -261,6 +265,15 @@ function TwitchWebSocket_SendImmediate(message)
 function TwitchWebSocket_Close()
 {
     twitchWebSocket.close();
+}
+
+function TwitchClearChat()
+{
+    for(let i=0; i<htmlChatMessageDivs.length; i++)
+    {
+        htmlChatMessageDivs[i].div.innerHTML = chatMessagesPrefix;
+        htmlChatMessageDivs[i].parsedSMS = {rawData:chatMessagesPrefix, count:-1, type:"NONE", sender:"", sms:chatMessagesPrefix};
+    }
 }
 
 function TwitchGetOAuth()
