@@ -11,7 +11,16 @@ let hideUnknownSMS = true;
 let hideAllSystemSMS = false;
 let chatMessagesPrefix = "> ";
 const maxChatMessages = 20;
-const htmlBtnChatConnect = document.getElementById("btnChatConnect")
+
+const htmlConnectionInfoPanel = document.getElementById("ConnectionInfoPanel");
+const htmlConnectionInfoSmallIcon = document.getElementById("btnConnectionInfoShow");
+let connectionInfoPanelShowing = true;
+function ShowConnectionInfoPanel(toggle = true)
+{
+    connectionInfoPanelShowing = toggle? !connectionInfoPanelShowing : false;
+    htmlConnectionInfoPanel.style.display = connectionInfoPanelShowing? "flex" : "none";
+}
+const htmlBtnChatConnect = document.getElementById("btnChatConnect");
 htmlBtnChatConnect.style.borderStyle = "solid";
 htmlBtnChatConnect.style.borderWidth = "2px";
 htmlBtnChatConnect.style.borderColor = "red";
@@ -65,19 +74,40 @@ function TwitchWebSocket_CheckQueue()
     }
 }
 
-setInterval(TwitchConnectionShowStatus, 500);
+setInterval(TwitchConnectionShowStatus, 250);
 function TwitchConnectionShowStatus()
 {
     if(!twitchWebSocket || !(twitchWebSocket instanceof WebSocket))
+    {
         htmlBtnChatConnect.style.borderColor = "red";
+        if(htmlConnectionInfoSmallIcon)
+            htmlConnectionInfoSmallIcon.style.borderColor = "red";
+    }
     else if(twitchWebSocket.readyState==1)
+    {
         htmlBtnChatConnect.style.borderColor = "green";
+        if(htmlConnectionInfoSmallIcon)
+            htmlConnectionInfoSmallIcon.style.borderColor = "green";
+    }
     else if(twitchWebSocket.readyState==0)
+    {
         htmlBtnChatConnect.style.borderColor = "yellow";
+        if(htmlConnectionInfoSmallIcon)
+            htmlConnectionInfoSmallIcon.style.borderColor = "yellow";
+    }
     else if(twitchWebSocket.readyState==2)
+    {
         htmlBtnChatConnect.style.borderColor = "orange";
+        if(htmlConnectionInfoSmallIcon)
+            htmlConnectionInfoSmallIcon.style.borderColor = "orange";
+    }
     else//if(twitchWebSocket.readyState==3)
+    {
         htmlBtnChatConnect.style.borderColor = "magenta";
+        if(htmlConnectionInfoSmallIcon)
+            htmlConnectionInfoSmallIcon.style.borderColor = "magenta";
+    }
+        
     /*WebSocket: readyState property
     WebSocket.CONNECTING (0)
     Socket has been created. The connection is not yet open.
@@ -108,7 +138,7 @@ function TwitchWebSocket_Connect()
     }
     if(oAuth==null || oAuth=="")
     {
-        TwitchWebSocket_Recieve({data:`:CIC Studios!CIC Studios@CIC Studios.tmi.twitch.tv PRIVMSG #${tChannel.replace("#", "")} :Missing Twitch OAuth (You must get this from https://twitchapps.com/tmi/). You can find a link in the button below.\r\n`});
+        TwitchWebSocket_Recieve({data:`:CIC Studios!CIC Studios@CIC Studios.tmi.twitch.tv PRIVMSG #${tChannel.replace("#", "")} :Missing Twitch OAuth (You must get this from https://twitchapps.com/tmi/) or from the connection panel above.\r\n`});
         return;
     }
         
@@ -126,6 +156,7 @@ function TwitchWebSocket_Open()
     twitchWebSocket.send(`PASS oauth:${oAuth.replace("oauth", "").replace("oAuth", "").replace("OAuth", "").replace("OAUTH", "").replace(":", "").replace(/\s/g, "")}`);
     twitchWebSocket.send(`NICK ${tNick}`);
     twitchWebSocket.send(`JOIN #${tChannel.replace("#", "").replace(/\s/g, "")}`);
+    ShowConnectionInfoPanel(false);
 }
 
 function TwitchWebSocket_Recieve(message)

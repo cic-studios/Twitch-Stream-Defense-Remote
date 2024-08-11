@@ -145,7 +145,9 @@
                 <div class="flexCol flexStart crossCenter" style="border: 4px; border-style: solid; border-color: var(--mbaBackBright); border-radius: 10px; max-width: 100%;">
                     
                     <div class="flexRow flexCenter selfCrossStretch" style="padding: 3px 3px 0px 3px;">
-                        <div style="font-weight: bold; font-size: 14px; color: aliceblue;">Stream Defence Remote</div>
+                        <button id="btnScreenNoSleepShow" title="Screen NoSleep" class="selfCrossEnd" style="cursor:row-resize; width: 15px; height: 15px; border-radius: 0px; border-style: solid; border-width: 4px; border-color: orange; background-color: transparent;" onclick="ShowConnectionInfoPanel(true)"></button>
+                        <div class="selfFlexGrow" style="cursor:row-resize; text-align:center; font-weight: bold; font-size: 14px; color: aliceblue;" onclick="ShowConnectionInfoPanel(true)">Stream Defence Remote</div>
+                        <button id="btnConnectionInfoShow" title="Show Connection" class="selfCrossEnd" style="cursor:row-resize; width: 15px; height: 15px; border-radius: 10px; border-style: solid; border-width: 4px; border-color: red; background-color: transparent;" onclick="ShowConnectionInfoPanel(true)"></button>
                     </div>
 
                     <div id="ConnectionInfoPanel" class="flexCol flexStart crossCenter selfCrossStretch pad5"  style="color: var(--mbaBackBright); border-style: none none solid none; border-width: 3px;">
@@ -158,17 +160,17 @@
                             <input id="inputTChat" type="text" name="inputTChat" placeholder="Stream Chat" value="archonthewizard"/>
                         </div>
                         <div id = "divConnectButtons" class="flexRow flexAround margin5 gap10">
+                            <button id="btnNoSleep" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleNoSleep()">Screen<br>NoSleep</button>
                             <!--<a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a>-->
-                            <button id="btnGetOAuth" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get OAuth</button>
-                            <button id="btnViewStream" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">Twitch Stream</button>
-                            <button id="btnChatConnect" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect Remote</button>
+                            <button id="btnGetOAuth" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchGetOAuth()">Get<br>OAuth</button>
+                            <button id="btnViewStream" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchViewStream()">View<br>Stream</button>
+                            <button id="btnChatConnect" class="sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="TwitchWebSocket_Connect()">Connect<br>Remote</button>
                         </div>
                     </div>
 
-                    <div id="mainOptionsPanel" class="flexCol flexAround crossStretch selfCrossStretch pad5 gap5">
-                        <div id="controlPanel" class="flexRow flexAround crossCenter selfCrossStretch" style="color: var(--mbaBackBright);">
+                    <div id="mainOptionsPanel" class="flexCol flexAround crossStretch selfCrossStretch pad10">
+                        <div id="controlPanel" class="flexRow flexAround crossCenter selfCrossStretch gap10" style="color: var(--mbaBackBright);">
                             <button id="btnReset" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_Reset()">Reset Slots</button>
-                            <button id="btnNoSleep" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="ToggleNoSleep()">No Sleep</button>
                             <button id="btnAwakeAFK" class="selfFlexGrow selfCrossStretch sdChunkyButton" style="padding: 2px 5px; border-radius: 10px;" onclick="SD_AwakeAFK()">Awake AFK</button>
                         </div>
                     </div>

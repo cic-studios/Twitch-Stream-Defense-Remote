@@ -273,9 +273,11 @@ module.exports = {
 
 //CIC NO SLEEP TOGGLE BUTTON
 const htmlNoSleepButton = document.getElementById("btnNoSleep");
+const htmlNoSleepSmallIcon = document.getElementById("btnScreenNoSleepShow");
+
 htmlNoSleepButton.style.borderStyle = "solid";
 htmlNoSleepButton.style.borderWidth = "2px";
-htmlNoSleepButton.style.borderColor = "red";
+htmlNoSleepButton.style.borderColor = "orange";
 function ToggleNoSleep()
 {
     if(noSleepMode)
@@ -289,6 +291,14 @@ function ToggleNoSleep()
         noSleep.enable();
         htmlNoSleepButton.style.borderColor = "green";
         noSleepMode = true;
+    }
+
+    if(htmlNoSleepSmallIcon)
+    {
+        if(noSleepMode)
+            htmlNoSleepSmallIcon.style.borderColor = "green";
+        else
+            htmlNoSleepSmallIcon.style.borderColor = "red";
     }
 }
 const noSleep = new NoSleep();
